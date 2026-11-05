@@ -1,0 +1,41 @@
+# ==========================================
+# ОБЩИЕ ИСКЛЮЧЕНИЯ .gitignore СИСТЕМЫ И IDE
+# ==========================================
+
+# Windows sys. files
+Thumbs.db
+desktop.ini
+
+# Code redactor (VS code)
+.vscode/
+
+# ==========================================
+# ИСКЛЮЧЕНИЯ .gitignore для FRONTEND
+# ==========================================
+
+# Logs
+frontend/logs
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/lerna-debug.log*
+
+# Production / Build
+frontend/dist/
+frontend/build/
+
+# TypeScript & Vite cache
+frontend/.vite/
+frontend/.vite-temp/
+frontend/.tmp/
+*.tsbuildinfo
+
+# file dependencies
+frontend/node_modules/
+
+# Environment variables (secret .env files)
+frontend/.env
+frontend/.env.*.local
+frontend/.env.local
