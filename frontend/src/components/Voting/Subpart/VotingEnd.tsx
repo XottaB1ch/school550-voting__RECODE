@@ -2,14 +2,14 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, XCircle } from "lucide-react";
 
-type Props = {
+type PROPS = {
     onReturn: () => void;
     status: "vote_success" | "vote_error";
     message?: string;
     title?: string;
 };
 
-export default function VotingEnd({ onReturn, status, message, title }: Props) {
+export default function VotingEnd({ onReturn, status, message, title }: PROPS) {
     const isSuccess = status === "vote_success";
 
     return (

@@ -1,10 +1,10 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
-type Props = {
+type PROPS = {
     onActivated: () => void;
 };
 
-export default function VotingDisabled({ onActivated }: Props){
+export default function VotingDisabled({ onActivated }: PROPS){
     return(
         //Логика с onActivated: сервер сообщает о том что "Йоу, мы активны" и вызываеться этот метод
         <Card className="w-full max-w-200 shadow-[0_10px_30px_rgba(0,0,0,0.25)] border-0 rounded-3xl overflow-hidden">

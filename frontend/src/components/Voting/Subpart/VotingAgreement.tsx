@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button";
 
 import { setCookie, getCookieByName } from "@/utils/cookies_pack"
 
-type Props = {
+type PROPS = {
     onAgree: () => void;
 };
 
-export default function VotingAgreement({ onAgree }: Props) {
+export default function VotingAgreement({ onAgree }: PROPS) {
     const [checkboxStatus, setCheckboxStatus] = useState(false);
 
     const onAccepted = () => {

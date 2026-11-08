@@ -9,6 +9,10 @@ desktop.ini
 # Code redactor (VS code)
 .vscode/
 
+# Different shit (test code parts, tests, etc.)
+TESTS/
+
+
 # ==========================================
 # ИСКЛЮЧЕНИЯ .gitignore для FRONTEND
 # ==========================================
