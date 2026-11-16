@@ -8,7 +8,7 @@ type PROPS = {
     onAgree: () => void;
 };
 
-export default function VotingAgreement({ onAgree }: PROPS) {
+export function VotingAgreement({ onAgree }: PROPS) {
     const [checkboxStatus, setCheckboxStatus] = useState(false);
 
     const onAccepted = () => {

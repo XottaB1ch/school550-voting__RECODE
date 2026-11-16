@@ -9,7 +9,7 @@ type PROPS = {
     title?: string;
 };
 
-export default function VotingEnd({ onReturn, status, message, title }: PROPS) {
+export function VotingEnd({ onReturn, status, message, title }: PROPS) {
     const isSuccess = status === "vote_success";
 
     return (

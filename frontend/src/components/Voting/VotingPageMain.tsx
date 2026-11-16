@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import VotingAgreement from "./Subpart/VotingAgreement";
-import VotingForm from "./Subpart/VotingForm";
-import VotingEnd from "./Subpart/VotingEnd";
-import VotingDisabled from "./Subpart/VotingDisabled";
+import { VotingAgreement } from "./Subpart/VotingAgreement";
+import { VotingForm } from "./Subpart/VotingForm";
+import { VotingEnd } from "./Subpart/VotingEnd";
+import { VotingDisabled } from "./Subpart/VotingDisabled";
 
 type POSSIBLE_STATES = "agreement" | "voting" | "vote_success" | "vote_error" | "disabled";
 

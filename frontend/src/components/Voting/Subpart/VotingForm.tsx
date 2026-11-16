@@ -3,6 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+
 /* REMOVE COMMENT WHEN DOING STUDENT LOGIC
 type STUDENT ={
     id: number;
@@ -37,13 +38,13 @@ const teams: TEAM[] = [
 const sortedTeams: TEAM[] = teams.toSorted((a, b) =>{
     return a.class.localeCompare(b.class, "ru", {numeric: true});}
 );
-
 type Props = {
     onSuccess: () => void;
     onError: () => void;
 };
 
-export default function VotingForm({ onSuccess, onError }: Props){
+export function VotingForm({ onSuccess, onError }: Props){
+    const maxCommandSelection = 3; //MUSST TO GET FROM SERVER. REDRAW PAGEF WHEN CHANGE.
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedTeamIds, setSelectedTeamIds] = useState<Set<number>>(new Set());
     /* REMOVE COMMENT WHEN DOING STUDENT LOGIC   
@@ -52,19 +53,13 @@ export default function VotingForm({ onSuccess, onError }: Props){
     );
     */
    
-    console.log(selectedTeamIds);
     const onTeamClicked = useCallback((teamId: number) => {
-            setSelectedTeamIds((prevSet) => {
-                const newSet = new Set(prevSet);
-                if (newSet.has(teamId)) {
-                    newSet.delete(teamId);
-                } else {
-                    newSet.add(teamId);
-                }
-                return newSet;
-            });
+        setSelectedTeamIds((prevSet) => {
+            const newSet = new Set(prevSet);
+            newSet.has(teamId) ? newSet.delete(teamId) : newSet.add(teamId);
+            return newSet;
+        });
     }, [])
-
     return(
         <Card className="w-full max-w-2xl bg-white rounded-3xl shadow-2xl">
             <CardHeader>
@@ -75,14 +70,14 @@ export default function VotingForm({ onSuccess, onError }: Props){
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                 onClick={() => setSearchQuery("")}/>
 
-                {//Аналог team-container
+                {
                 <div>
                     {sortedTeams.map(team => {
                         return(
                             <div key={team.id} className="p-3 bg-slate-50 rounded-lg flex justify-between items-center" onClick={() => onTeamClicked(team.id)}>
-                                <Checkbox id={`team-checkbox-${team.id}`}/>
-                                <label htmlFor={`team-checkbox-${team.id}`} >
-                                    <span className="font-medium">{`${team.name}`}</span>
+                                <Checkbox id={`team-checkbox-${team.id}`} checked={selectedTeamIds.has(team.id)}/>
+                                <label htmlFor={`team-checkbox-${team.id}`} className="flex-1">
+                                    <span className="font-medium flex-1">{`${team.name}`}</span>
                                     <span className="text-sm text-slate-500">{team.class}</span>
                                 </label>
                             </div>
@@ -91,8 +86,10 @@ export default function VotingForm({ onSuccess, onError }: Props){
                 </div>
                 }
 
-                {/*selectedTeamIds.size === 3 &&*/}
-                <Button onClick={onSuccess}>Проголосовать (Успех)</Button>
+                <Button onClick={onSuccess}
+                disabled={
+                    !(selectedTeamIds.size === 3)
+                }>Проголосовать (Успех)</Button>
                 <Button onClick={onError}>Проголосовать (Не успех)</Button>
             </CardContent>
         </Card>
