@@ -56,7 +56,11 @@ export function VotingForm({ onSuccess, onError }: Props){
     const onTeamClicked = useCallback((teamId: number) => {
         setSelectedTeamIds((prevSet) => {
             const newSet = new Set(prevSet);
-            newSet.has(teamId) ? newSet.delete(teamId) : newSet.add(teamId);
+            if(newSet.has(teamId)){
+                newSet.delete(teamId);
+            } else {
+                newSet.add(teamId);
+            }
             return newSet;
         });
     }, [])
@@ -66,10 +70,10 @@ export function VotingForm({ onSuccess, onError }: Props){
                 <CardTitle>Пример страницы для голосования</CardTitle>
             </CardHeader>
             <CardContent>
+                <h6>Выбранно команд: {selectedTeamIds.size}/{maxCommandSelection}</h6>
                 <Input placeholder = "Начните вводить ФИО ученика..." value = {searchQuery} 
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                 onClick={() => setSearchQuery("")}/>
-
                 {
                 <div>
                     {sortedTeams.map(team => {
