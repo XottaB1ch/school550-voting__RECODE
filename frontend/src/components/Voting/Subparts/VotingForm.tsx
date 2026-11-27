@@ -3,7 +3,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-
+import { get_right_plural_word_form } from "@/utils/wordle";
 /* REMOVE COMMENT WHEN DOING STUDENT LOGIC
 type STUDENT ={
     id: number;
@@ -70,6 +70,7 @@ export function VotingForm({ onSuccess, onError }: Props){
                 <CardTitle>Пример страницы для голосования</CardTitle>
             </CardHeader>
             <CardContent>
+                <h6>Выберите {maxCommandSelection} {get_right_plural_word_form(maxCommandSelection, "Команда", "Команды", "Команд")}</h6>
                 <h6>Выбранно команд: {selectedTeamIds.size}/{maxCommandSelection}</h6>
                 <Input placeholder = "Начните вводить ФИО ученика..." value = {searchQuery} 
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -89,6 +90,7 @@ export function VotingForm({ onSuccess, onError }: Props){
                     })}
                 </div>
                 }
+            
 
                 <Button onClick={onSuccess}
                 disabled={

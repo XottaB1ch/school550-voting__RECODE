@@ -1,8 +1,8 @@
 export function get_right_plural_word_form(
   count: number,
-  singleForm: string,
-  secondForm: string,
-  pluralForm: string,
+  singleForm: string, //Слово в Именительном падеже, Ед. Числе. (Пример: Команда)
+  secondForm: string, //Слово в Родительном падеже, Ед. Числе. (Пример: Команды)
+  pluralForm: string, //Слово в Родительном падеже, Мн. Числе. (Пример: Команд)
 ): string {
   if (!Number.isInteger(count)) {
     return secondForm;
