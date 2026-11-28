@@ -17,7 +17,7 @@ export function VotingAgreement({ onAgree }: PROPS) {
         setCookie("voting_agreement_accepted", "true", {lifeTime : date.toUTCString(), sameSite : "Lax"})
         onAgree();
     };
-    useEffect(() => {if (getCookieByName("voting_agreement_accepted") !== undefined) {onAgree();}}, [onAgree]);
+    useEffect(() => {if (getCookieByName("voting_agreement_accepted") !== undefined) {onAgree();}}, []);
     
     return (
         // Оверлей с затемнением экрана

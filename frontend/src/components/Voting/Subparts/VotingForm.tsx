@@ -59,6 +59,9 @@ export function VotingForm({ onSuccess, onError }: Props){
             if(newSet.has(teamId)){
                 newSet.delete(teamId);
             } else {
+                if (newSet.size >= maxCommandSelection) {
+                    return prevSet;
+                }
                 newSet.add(teamId);
             }
             return newSet;
@@ -71,7 +74,7 @@ export function VotingForm({ onSuccess, onError }: Props){
             </CardHeader>
             <CardContent>
                 <h6>Выберите {maxCommandSelection} {get_right_plural_word_form(maxCommandSelection, "Команда", "Команды", "Команд")}</h6>
-                <h6>Выбранно команд: {selectedTeamIds.size}/{maxCommandSelection}</h6>
+                <h6>Выбрано команд: {selectedTeamIds.size}/{maxCommandSelection}</h6>
                 <Input placeholder = "Начните вводить ФИО ученика..." value = {searchQuery} 
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                 onClick={() => setSearchQuery("")}/>
